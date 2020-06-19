@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Rulla Smart</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+</head>
+<body style="padding: 20px;background-color: rgb(58, 58, 58); color: white;display: flex;flex-direction: column;align-items: center;text-align: center;">
+    <h1>Rulla smart</h1>
+
+    <br>
+    <p>Pris per kilometer exkl uppkörningsavgift: 10 kr</p>
+    <br>
+
+    <form id="form">
+        <input id="kilometer" type="number" placeholder="Antal kilometer">
+        <input id="submit" type="submit" value="Beräkna">
+    </form>
+
+    <br>
+    <p id="kostnad" style="color: rgb(70, 133, 70);"></p>
+    <p id="bensin"></p>
+    <p id="vinst"></p>
+    <p id="taxi" style="color: rgb(160, 38, 38);"></p>
+    <br>
+
+    <script>
+        let submitBtn = document.getElementById("submit");
+        let form = document.getElementById("form");
+
+        form.onsubmit = (e) => {
+            let kilometer = document.getElementById("kilometer");
+
+            e.preventDefault();
+            
+            document.getElementById("kostnad").innerText = "Pris till kund: " + beräknaPris(kilometer.value) + " kr";
+            document.getElementById("taxi").innerText = "Vanlig taxipris: " + beräknaTaxiPris(kilometer.value) + " kr";
+        }
+
+        function beräknaPris(km) {
+            return (50 + (km * 10))
+        }
+
+        function beräknaTaxiPris(km) {
+            return (50 + (km * 25))
+        }
+    </script>
+    
+</body>
+</html>
